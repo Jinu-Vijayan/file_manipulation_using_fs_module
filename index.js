@@ -12,6 +12,16 @@ const stringToArray = (fileName) => {
     return filteredResult;
 }
 
+const overWriteDb = (fileName, arr) => {
+    arr.push("");
+    const dataToWrite = arr.join("\n");
+    try{
+        fs.writeFileSync(fileName, dataToWrite);
+    }catch(error){
+        console.log(error);
+    }
+}
+
 const appendFile = (fileName,dataToWrite) => {
     try{
         fs.appendFileSync(fileName,`${dataToWrite}\n`);
@@ -43,15 +53,16 @@ const markTaskAsComplete = (fileName, taskName) => {
         return elem;
     })
 
-    mappedResult.push("")
-    const dataToWrite = mappedResult.join("\n")
+    overWriteDb(fileName, mappedResult);
 
-    try{
-        fs.writeFileSync(fileName, dataToWrite);
-    }catch(error){
-        console.log(error);
-    }
+}
 
+const deleteTask = (fileName, taskName) => {
+    const data = stringToArray(fileName);
+
+    const filteredResult = data.filter((elem) => elem !== taskName);
+    
+    overWriteDb(fileName, filteredResult);
 }
 
 appendFile(fileName,"this is task1");
@@ -63,3 +74,9 @@ console.log(result);
 
 markTaskAsComplete(fileName, 'this is task1');
 markTaskAsComplete(fileName, 'this is task2');
+
+deleteTask(fileName, "this is task3");
+
+appendFile(fileName,"this is task4");
+
+markTaskAsComplete(fileName, 'this is task4');
