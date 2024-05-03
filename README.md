@@ -1,6 +1,6 @@
 # Basic task manager
 
-You can use this to make store tasks in a simple txt file. You can add, delete, update, and read the tasks that you have inside the txt file.
+You can use this to store tasks in a simple txt file. You can add, delete, update, and read the tasks that you have inside the txt file.
 
 ## Usage
 
