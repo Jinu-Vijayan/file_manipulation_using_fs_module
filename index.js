@@ -61,22 +61,29 @@ const deleteTask = (fileName, taskName) => {
     const data = stringToArray(fileName);
 
     const filteredResult = data.filter((elem) => elem !== taskName);
-    
+
     overWriteDb(fileName, filteredResult);
 }
 
-appendFile(fileName,"this is task1");
-appendFile(fileName,"this is task2");
-appendFile(fileName,"this is task3");
+// appendFile(fileName,"this is task1");
+// appendFile(fileName,"this is task2");
+// appendFile(fileName,"this is task3");
 
-const result = readFile('sample.txt');
-console.log(result);
+// const result = readFile('sample.txt');
+// console.log(result);
 
-markTaskAsComplete(fileName, 'this is task1');
-markTaskAsComplete(fileName, 'this is task2');
+// markTaskAsComplete(fileName, 'this is task1');
+// markTaskAsComplete(fileName, 'this is task2');
 
-deleteTask(fileName, "this is task3");
+// deleteTask(fileName, "this is task3");
 
-appendFile(fileName,"this is task4");
+// appendFile(fileName,"this is task4");
 
-markTaskAsComplete(fileName, 'this is task4');
+// markTaskAsComplete(fileName, 'this is task4');
+
+module.exports = {
+    appendFile,
+    readFile,
+    markTaskAsComplete,
+    deleteTask
+}
